@@ -1,12 +1,14 @@
 var tabla = document.createElement("div")
 var kartyaBox = document.createElement("div")
+var leftSide = document.createElement("div")
 var pontBox = document.createElement("div")
 var korokBox = document.createElement("div")
 var jatekTer = document.getElementById("jatekTer")
 
 function jatekTerBetolt(){
-    jatekTer.appendChild(kartyaBox)
-    jatekTer.appendChild(PotBox)
+    leftSide.appendChild(kartyaBox)
+    leftSide.appendChild(pontBox)
+    jatekTer.appendChild(leftSide)
     jatekTer.appendChild(tabla)
     jatekTer.appendChild(korokBox)
     
@@ -17,7 +19,11 @@ function jatekTerBetolt(){
 }
 
 function jatekTerElrendezes(){
+    leftSide.id = "leftside"
     kartyaBox.id = "kartyaBox"
+    pontBox.id = "Pontbox"
+    korokBox.id = "korokBox"
+    tabla.id = "tabla"
 }
 jatekTerBetolt()
 jatekTerElrendezes()

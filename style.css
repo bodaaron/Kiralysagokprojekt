@@ -4,4 +4,18 @@ div{
 }
 #kartyabox{
     border: 1px solid darkgreen;
+    margin: 5px;
+}
+#pontbox{
+    border: 1px solid darkgreen;
+    margin: 5px;
+}
+#tabla{
+    border: 1px solid darkgreen;
+}
+#korokbox{
+    border: 1px solid darkgreen;
+}
+#leftsdie{
+    
 }
