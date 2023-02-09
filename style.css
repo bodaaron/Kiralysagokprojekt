@@ -1,21 +1,46 @@
-
-div{
-    border: 1px solid darkred;
+#jatekTer{
+    border: 1px solid red;
+    width: 100%;
+    height: 40vw;
+    display: flex;
 }
-#kartyabox{
-    border: 1px solid darkgreen;
-    margin: 5px;
+#leftside{
+    height: 40vw;
+    width: 30%;
 }
-#pontbox{
+#kartyaBox{
     border: 1px solid darkgreen;
-    margin: 5px;
+    width: 100%;
+    height: 20vw;
+}
+#Pontbox{
+    border: 1px solid darkgreen;
+    width: 100%;
+    height: 20vw;
 }
 #tabla{
     border: 1px solid darkgreen;
+    height: 40vw;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
 }
-#korokbox{
-    border: 1px solid darkgreen;
+#korokBox{
+    border: 1px solid black;
+    width: 20%;
+    height: 40vw;
 }
-#leftsdie{
-    
+
+.sordiv{
+    display: flex;
+    flex-direction: row;
+    height: 8vw;
+}
+.oszlopdiv{
+    width: 16.6%;
+    margin: 5px;
+    border: 1px solid black;
+}
+img{
+    width: 100%;
 }
