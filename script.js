@@ -67,6 +67,7 @@ function KartyakatBelegeneral(db){
         var hely = document.getElementById(velhelyszam);
         hely.appendChild(kep1);
     }
+    
     //hf háttérszínek
     // hf csináld meg hogy ne legyen ismétlődés helyek és számok között
 }
