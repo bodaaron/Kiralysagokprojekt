@@ -7,6 +7,7 @@
 #leftside{
     height: 40vw;
     width: 30%;
+    background-color: brown;
 }
 #kartyaBox{
     border: 1px solid darkgreen;
@@ -24,11 +25,13 @@
     width: 50%;
     display: flex;
     flex-direction: column;
+    background-color: green;
 }
 #korokBox{
     border: 1px solid black;
     width: 20%;
     height: 40vw;
+    background-color: brown;
 }
 
 .sordiv{
