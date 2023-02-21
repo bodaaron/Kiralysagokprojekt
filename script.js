@@ -60,21 +60,24 @@ function TablaGeneralasa(){
 function KartyakatBelegeneral(db){
     //egy kártyát kiválaszt és elhelyez az első mezőben
     for(var i  = 0; i<db; i++){
-        var velkartyaszam = Math.floor(Math.random()*22+1);
+        var velkartyaszam = Math.floor(Math.random()*23+1);
         var kep1 = document.createElement("img");
         kep1.src = "img/"+velkartyaszam+".jpg";
-        var velhelyszam = Math.floor(Math.random()*29+1);
+        var velhelyszam = Math.floor(Math.random()*30+1);
         var hely = document.getElementById(velhelyszam);
         hely.appendChild(kep1);
+
     }
     //hf háttérszínek
     // hf csináld meg hogy ne legyen ismétlődés helyek és számok között
 }
+
 
 function Main(){
     jatekTerBetolt();
     jatekTerElrendezes();
     TablaGeneralasa();
     KartyakatBelegeneral(23);
+
 }
 Main();
