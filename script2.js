@@ -57,11 +57,42 @@ function TablaGeneralasa(){
     }
 }
 
+function KartyakatBelegeneral(db){
+    var tomb = new Array();
+    var tomb2 = new Array();
+    var tomb3 = new Array();
+
+    while(tomb.length!=db){
+        var kep1 = document.createElement("img");
+        var kep2 = document.createElement("img");
+        var velkartyaszam = Math.floor(Math.random()*23+1);
+        var velhelyszam = Math.floor(Math.random()*29+1);
+        var varszam = Math.floor(Math.random()*15+1);
+        if(tomb.indexOf(velkartyaszam)==-1){
+            console.log(velkartyaszam);
+            kep1.src = "img/"+velkartyaszam+".jpg"
+            tomb.push(velkartyaszam);
+        while(tomb2.length < 29 && tomb2.indexOf(velhelyszam)>-1){  
+                var velhelyszam = Math.floor(Math.random()*29+1);  
+                console.log(velhelyszam) 
+            }
+            var hely = document.getElementById(velhelyszam);
+            hely.appendChild(kep1);
+            tomb2.push(velhelyszam);
+        }
+        /*while(tomb3.length < 7){
+        if(tomb2.indexOf(velhelyszam)>-1){
+            kep2.src = "varak/"+varszam+".png"
+            tomb2.push(velhelyszam)
+            tomb3.push(varszam)
+        }*/
+        }
+    }
+
 function Main(){
     jatekTerBetolt();
     jatekTerElrendezes();
     TablaGeneralasa();
     KartyakatBelegeneral(23);
-
 }
 Main();
