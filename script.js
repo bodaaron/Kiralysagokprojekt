@@ -74,6 +74,18 @@ function CellakFeltoltese(){
 }
 
 function CellakMegjelenitese(){
+    for(var i = 0;i<cellak.length;i++){
+        var index = cellak[i].info.id;
+        var kep = document.createElement("img");
+        if(cellak[i].type == "kártya"){
+            kep.src = "img/"+index+".jpg"
+        }
+        else{
+            kep.src = "varak/"+index+".png"
+        }
+        var div = document.getElementById(i);
+        div.appendChild(kep);
+    }
     
 }
 
@@ -84,6 +96,7 @@ function Main(){
     TablaGeneralasa();
     KartyakatBelegeneral(23);
     CellakFeltoltese();
+    CellaKeveres();
     CellakMegjelenitese();
 }
 Main();
