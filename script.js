@@ -71,7 +71,16 @@ function CellakFeltoltese(){
 
 }
 function CellakMegjelenitese(){ 
-     jatekTer.appendChild(cellak[0])
+    for(var i = 0; i < cellak.length; i++){
+        var index = cellak[i].info.id
+        var kep = document.createElement("img")
+        kep.src = "img/"+index+".jpg"
+        var div = document.getElementById(i)
+        if(i > 22){
+            kep.src = "varak/"+index+".png"
+        }
+        div.appendChild(kep)
+    }
 }
 
 console.log(objektum.szam1);
@@ -141,6 +150,7 @@ function Main(){
     jatekTerElrendezes();
     TablaGeneralasa();
     CellakFeltoltese();
+    CellaKeveres();
     CellakMegjelenitese();
 }
 Main();
