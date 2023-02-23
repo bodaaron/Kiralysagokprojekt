@@ -57,11 +57,33 @@ function TablaGeneralasa(){
     }
 }
 
+var cellak = [];
+
+function CellakFeltoltese(){
+    for(var i= 0;i<23;i++){
+        cellak[i] = {};
+        cellak[i].type = "kártya";
+        cellak[i].info = kartyaAdatok[i];
+    }
+    for(var i = 23;i<30;i++){
+        cellak[i] = {};
+        cellak[i].type = "vár";
+        cellak[i].info = varAdatok[i-23];
+    }
+    console.log(cellak);
+}
+
+function CellakMegjelenitese(){
+    
+}
+
 function Main(){
+    console.log(kartyaAdatok[0].id);
     jatekTerBetolt();
     jatekTerElrendezes();
     TablaGeneralasa();
     KartyakatBelegeneral(23);
-
+    CellakFeltoltese();
+    CellakMegjelenitese();
 }
 Main();
