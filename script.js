@@ -158,7 +158,37 @@ function CellakMegjelenitese(){
         var div = document.getElementById(i);
         div.appendChild(kep);
     }
+}
+
+function CellaKeveres(){
+    for(var i = 0;i<100;i++){
+        var a = Math.floor(Math.random()*29+1);
+        console.log(a);
+        var sv = cellak[0];
+        cellak[0] = cellak[a];
+        cellak[a] = sv;
+    }
+}
+
+function SorOsszeg(){
     
+    for(let i = 0;i<5;i++){
+        var osszeg = 0;
+        for(let j = 0;j<6;j++){
+            osszeg += cellak[i*6+j].info.value;
+        }
+        console.log(osszeg);
+    }
+}
+
+function OszlopOsszeg(){
+    for(let i = 0;i<6;i++){
+        var osszeg = 0;
+        for(let j = 0;j<5;j++){
+            osszeg += cellak[i*5+j].info.value;
+        }
+        console.log(osszeg);
+    }
 }
 
 function Main(){
@@ -184,5 +214,7 @@ function Main(){
     CellakFeltoltese();
     CellaKeveres();
     CellakMegjelenitese();
+    SorOsszeg();
+    OszlopOsszeg();
 }
 Main();
