@@ -70,6 +70,13 @@ function CellakFeltoltese(){
     }
 
 }
+
+function CellaKeveres(){
+    for(var i = 0; i < cellak.length; i++){
+        
+    }
+}
+
 function CellakMegjelenitese(){ 
     for(var i = 0; i < cellak.length; i++){
         var index = cellak[i].info.id
