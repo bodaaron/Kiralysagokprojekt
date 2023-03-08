@@ -109,7 +109,6 @@ function jatekTerElrendezes(){
 
 function TablaGeneralasa(){
     var k = 0;
-    var i = 0;
     for(var i = 0; i<5; i++){
         var sorDiv = document.createElement("div");
         sorDiv.classList += "sordiv";
