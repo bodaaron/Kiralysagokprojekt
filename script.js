@@ -176,14 +176,15 @@ function KartyaboxbaGeneralas(){
         kep.value = index; 
         kep.style.visibility = "hidden";
         kartyaBox.appendChild(kep);
-        /*kartyaBox.addEventListener("click",function()){
-            kepIndex = this.value;
-            var pothely =document.getElementById("potHely")
-            pothely.appendChild(kep)
-            kep.style.width = "200px"
-        }*/
-    }
-    
+
+        kartyaBox.addEventListener("click",function(){
+            if(!kepKivalasztva && kepElhelyezve){
+                kepIndex = kep.value
+                kepKivalasztva = true
+                kepElhelyezve = false
+            }
+    })
+}
 }
 
 function Main(){
