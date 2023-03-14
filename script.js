@@ -81,6 +81,14 @@ var leftSide = document.createElement("div");
 var pontBox = document.createElement("div");
 var korokBox = document.createElement("div");
 var jatekTer = document.getElementById("jatekTer");
+var kepKivalasztva = false;
+var kepElhelyezve = true;
+var kepIndex;
+
+var cellak = [];
+var kepKivalasztva = false;
+var kepElhelyezve = true;
+var kepIndex;
 
 var cellak = []
 var kepKivalasztva = false
