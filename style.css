@@ -13,6 +13,9 @@
     border: 1px solid darkgreen;
     width: 100%;
     height: 20vw;
+    background-image: url("láda.png");
+    background-size: cover;
+    background-color: brown;
 }
 #Pontbox{
     border: 1px solid darkgreen;

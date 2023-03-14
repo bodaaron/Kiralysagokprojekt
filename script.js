@@ -56,6 +56,7 @@ function Torol(){
 }
 
 var cellak = []
+var tomb = []
 
 function CellakFeltoltese(){
     for(var i = 0; i < 23; i++){
@@ -71,27 +72,8 @@ function CellakFeltoltese(){
 
 }
 
-function CellaKeveres(){
-    for(var i = 0; i < cellak.length; i++){
-        
-    }
-}
-
-function CellakMegjelenitese(){ 
-    for(var i = 0; i < cellak.length; i++){
-        var index = cellak[i].info.id
-        var kep = document.createElement("img")
-        kep.src = "img/"+index+".jpg"
-        var div = document.getElementById(i)
-        if(i > 22){
-            kep.src = "varak/"+index+".png"
-        }
-        div.appendChild(kep)
-    }
-}
-
-console.log(objektum.szam1);
-console.log(objektum.Szomszedok[0]);
+/*console.log(objektum.szam1);
+console.log(objektum.Szomszedok[0]);*/
 
 var tabla = document.createElement("div");
 var kartyaBox = document.createElement("div");
@@ -99,6 +81,11 @@ var leftSide = document.createElement("div");
 var pontBox = document.createElement("div");
 var korokBox = document.createElement("div");
 var jatekTer = document.getElementById("jatekTer");
+
+var cellak = []
+var kepKivalasztva = false
+var kepElhelyezve = true
+var kepIndex;
 
 function jatekTerBetolt(){
     leftSide.appendChild(kartyaBox);
@@ -130,46 +117,52 @@ function TablaGeneralasa(){
             oszlopDiv.classList += "oszlopdiv";
             oszlopDiv.id = k;
             k++;
-            sorDiv.appendChild(oszlopDiv);
-        }
-        tabla.appendChild(sorDiv);
-    }
-}
 
-var cellak = [];
-
-function CellakFeltoltese(){
-    for(var i= 0;i<23;i++){
-        cellak[i] = {};
-        cellak[i].type = "kártya";
-        cellak[i].info = kartyaAdatok[i];
-    }
-    for(var i = 23;i<30;i++){
-        cellak[i] = {};
-        cellak[i].type = "vár";
-        cellak[i].info = varAdatok[i-23];
-    }
-    console.log(cellak);
-}
-
-function CellakMegjelenitese(){
-    for(var i = 0;i<cellak.length;i++){
-        var index = cellak[i].info.id;
-        var kep = document.createElement("img");
-        if(cellak[i].type == "kártya"){
-            kep.src = "img/"+index+".jpg"
+            oszlopDiv.addEventListener("click",function(){
+                for(var i = 0; i < tomb.length; i++){
+                        if(kepKivalasztva && !kepElhelyezve && tomb[i] == this.id){
+                            kepElhelyezve = true;
+                            kepKivalasztva = false;
+                            var kep = document.createElement("img");
+                            kep.src = "img/"+kepIndex+".jpg";
+                            this.appendChild(kep);
+                        }    
+                    }
+                    tomb.push(this.id);
+                    console.log(tomb);
+            })
+                
+                sorDiv.appendChild(oszlopDiv);
+            }
+            tabla.appendChild(sorDiv);
         }
-        else{
-            kep.src = "varak/"+index+".png"
-        }
-        var div = document.getElementById(i);
-        div.appendChild(kep);
     }
+
+/*function PotHelyreGeneralas(){
+    for(var i = 0;i<23;i++){
+    var index = cellak[i].info.id;
+    var kep = document.createElement("img")
+    kep.src = "img/"+index+".jpg"
+    kep.style.width = "200px"
+    kep.value = index; //kep indexét tárolom
+
+    kep.addEventListener("click",function(){
+        if(!kepKivalasztva && kepElhelyezve){
+            kepIndex = this.value
+            kepKivalasztva = true
+            this.style.visibility = "hidden"
+            kepElhelyezve = false
+        }
+    })
+
+    var pothely =document.getElementById("potHely")
+    pothely.appendChild(kep)
 }
+}*/
 
 function CellaKeveres(){
     for(var i = 0;i<100;i++){
-        var a = Math.floor(Math.random()*29+1);
+        var a = Math.floor(Math.random()*23+1);
         console.log(a);
         var sv = cellak[0];
         cellak[0] = cellak[a];
@@ -177,51 +170,35 @@ function CellaKeveres(){
     }
 }
 
-function SorOsszeg(){
-    
-    for(let i = 0;i<5;i++){
-        var osszeg = 0;
-        for(let j = 0;j<6;j++){
-            osszeg += cellak[i*6+j].info.value;
-        }
-        console.log(osszeg);
-    }
-}
+function KartyaboxbaGeneralas(){
+    for(let i = 0;i<23;i++){
+        var index = cellak[i].info.id;
+        var kep = document.createElement("img")
+        kep.src = "img/"+index+".jpg"
+        kep.value = index; 
+        kep.style.visibility = "hidden";
+        kartyaBox.appendChild(kep);
 
-function OszlopOsszeg(){
-    for(let i = 0;i<6;i++){
-        var osszeg = 0;
-        for(let j = 0;j<5;j++){
-            osszeg += cellak[i*5+j].info.value;
-        }
-        console.log(osszeg);
-    }
+        kartyaBox.addEventListener("click",function(){
+            if(!kepKivalasztva && kepElhelyezve){
+                kepIndex = kep.value
+                kepKivalasztva = true
+                kepElhelyezve = false
+            }
+    })
+}
 }
 
 function Main(){
 
     console.log(kartyaAdatok[0].id)
-    /* 
-    cellak[i] -> cella
-    cella ={
-        type: "vár"/"kártya",
-        info: (id:1,color:1,value:1)(id:1, value:1,sign=')
-    }
-
-    cella.tpye -> vár
-    cella.info.id -> 1
-
-    cellak[i].type -> vár
-    cellak[i].info.id -> 1
-    */
 
     jatekTerBetolt();
     jatekTerElrendezes();
     TablaGeneralasa();
     CellakFeltoltese();
+    //PotHelyreGeneralas();
     CellaKeveres();
-    CellakMegjelenitese();
-    SorOsszeg();
-    OszlopOsszeg();
+    KartyaboxbaGeneralas();
 }
 Main();
