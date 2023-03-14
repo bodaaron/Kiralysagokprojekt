@@ -55,8 +55,8 @@ function Torol(){
     console.log("töröl");
 }
 
-var cellak = []
-
+var cellak = [];
+var tomb = [];
 
 
 console.log(objektum.szam1);
@@ -68,6 +68,11 @@ var leftSide = document.createElement("div");
 var pontBox = document.createElement("div");
 var korokBox = document.createElement("div");
 var jatekTer = document.getElementById("jatekTer");
+var kepKivalasztva = false;
+var kepElhelyezve = true;
+var kepIndex;
+
+var cellak = [];
 var kepKivalasztva = false;
 var kepElhelyezve = true;
 var kepIndex;
@@ -102,61 +107,85 @@ function TablaGeneralasa(){
             oszlopDiv.classList += "oszlopdiv";
             oszlopDiv.id = k;
             k++;
-            oszlopDiv.addEventListener("click",function(){
-                if(kepKivalasztva && !kepElhelyezve){
-                    kepElhelyezve = true;
-                    kepKivalasztva = false;
-                    var kep = document.createElement("img");
-                    kep.src = "img/"+kepIndex+".jpg"
-                    this.appendChild(kep);
-                }
-            })
-            sorDiv.appendChild(oszlopDiv);
+
+                oszlopDiv.addEventListener("click",function(){
+                    tomb.push(oszlopDiv.id);
+                    if(kepKivalasztva && !kepElhelyezve && tomb[i] != oszlopDiv.id){
+                        kepElhelyezve = true;
+                        kepKivalasztva = false;
+                        var kep = document.createElement("img");
+                        kep.src = "img/"+kepIndex+".jpg"
+                        this.appendChild(kep);
+                        i++;
+                    }    
+                })
+                
+                sorDiv.appendChild(oszlopDiv);
+            }
+            tabla.appendChild(sorDiv);
         }
-        tabla.appendChild(sorDiv);
+    }
+
+/*function PotHelyreGeneralas(){
+    for(var i = 0;i<23;i++){
+    var index = cellak[i].info.id;
+    var kep = document.createElement("img")
+    kep.src = "img/"+index+".jpg"
+    kep.style.width = "200px"
+    kep.value = index; //kep indexét tárolom
+
+    kep.addEventListener("click",function(){
+        if(!kepKivalasztva && kepElhelyezve){
+            kepIndex = this.value
+            kepKivalasztva = true
+            this.style.visibility = "hidden"
+            kepElhelyezve = false
+        }
+    })
+
+    var pothely =document.getElementById("potHely")
+    pothely.appendChild(kep)
+}
+}*/
+
+function CellaKeveres(){
+    for(var i = 0;i<100;i++){
+        var a = Math.floor(Math.random()*23+1);
+        console.log(a);
+        var sv = cellak[0];
+        cellak[0] = cellak[a];
+        cellak[a] = sv;
     }
 }
 
-var cellak = [];
+function KartyaboxbaGeneralas(){
+    for(let i = 0;i<23;i++){
+        var index = cellak[i].info.id;
+        var kep = document.createElement("img");
+        kep.src = "img/"+index+".jpg";
+        kep.value = index; 
+        kep.style.visibility = "hidden";
+        kartyaBox.appendChild(kep);
 
-function PothelyreGeneralas(){
-    var kep = document.createElement("img");
-    kep.src= "img/1.jpg "
-    kep.style.width = "200px"
-    //kep.setAttribute("onclick","Kepkivalasztas(this)")
-    kep.value = 1;
-    kep.addEventListener("click",function(){
-        if(!kepKivalasztva && kepElhelyezve){
-            kepIndex = this.value;
-            kepKivalasztva = true;
-            this.style.visibility = "hidden";
-            kepElhelyezve = false;
-        }
+        kartyaBox.addEventListener("click",function(){
+            if(!kepKivalasztva && kepElhelyezve){
+                kepIndex = kep.value;
+                kepKivalasztva = true;
+                kepElhelyezve = false;
+            }
     })
-    var pothely = document.getElementById("potHely");
-    pothely.appendChild(kep);
+}
 }
 
 function Main(){
 
-    console.log(kartyaAdatok[0].id)
-    /* 
-    cellak[i] -> cella
-    cella ={
-        type: "vár"/"kártya",
-        info: (id:1,color:1,value:1)(id:1, value:1,sign=')
-    }
-
-    cella.tpye -> vár
-    cella.info.id -> 1
-
-    cellak[i].type -> vár
-    cellak[i].info.id -> 1
-    */
+    console.log(kartyaAdatok[0].id);
 
     jatekTerBetolt();
     jatekTerElrendezes();
     TablaGeneralasa();
-    PothelyreGeneralas();
+    //PotHelyreGeneralas();
+    CellaKeveres();
+    KartyaboxbaGeneralas();
 }
 Main();
