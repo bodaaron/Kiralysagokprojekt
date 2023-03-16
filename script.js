@@ -57,6 +57,7 @@ function Torol(){
 
 var cellak = []
 var tomb = []
+var kep1 = document.createElement("img")
 
 function CellakFeltoltese(){
     for(var i = 0; i < 23; i++){
@@ -127,74 +128,74 @@ function TablaGeneralasa(){
             k++;
 
             oszlopDiv.addEventListener("click",function(){
-                for(var i = 0; i < tomb.length; i++){
-                        if(kepKivalasztva && !kepElhelyezve && tomb[i] == this.id){
+                        var pothely =document.getElementById("potHely")
+                        if(kepKivalasztva && !kepElhelyezve && !(tomb.indexOf(this.id)>-1)){
                             kepElhelyezve = true;
                             kepKivalasztva = false;
                             var kep = document.createElement("img");
                             kep.src = "img/"+kepIndex+".jpg";
                             this.appendChild(kep);
-                        }    
-                    }
-                    tomb.push(this.id);
-                    console.log(tomb);
-            })
-                
+                            tomb.push(this.id)
+                            pothely.removeChild(kep1)
+                        }  
+                        console.log(tomb)
+                    })
                 sorDiv.appendChild(oszlopDiv);
             }
             tabla.appendChild(sorDiv);
         }
     }
 
-/*function PotHelyreGeneralas(){
-    for(var i = 0;i<23;i++){
-    var index = cellak[i].info.id;
-    var kep = document.createElement("img")
-    kep.src = "img/"+index+".jpg"
-    kep.style.width = "200px"
-    kep.value = index; //kep indexét tárolom
-
-    kep.addEventListener("click",function(){
-        if(!kepKivalasztva && kepElhelyezve){
-            kepIndex = this.value
-            kepKivalasztva = true
-            this.style.visibility = "hidden"
-            kepElhelyezve = false
+    function CellaKeveres(){
+        for(var i = 0;i<100;i++){
+            var a = Math.floor(Math.random()*23+1);
+            console.log(a);
+            var sv = cellak[0];
+            cellak[0] = cellak[a];
+            cellak[a] = sv;
         }
-    })
-
-    var pothely =document.getElementById("potHely")
-    pothely.appendChild(kep)
-}
-}*/
-
-function CellaKeveres(){
-    for(var i = 0;i<100;i++){
-        var a = Math.floor(Math.random()*23+1);
-        console.log(a);
-        var sv = cellak[0];
-        cellak[0] = cellak[a];
-        cellak[a] = sv;
     }
-}
 
-function KartyaboxbaGeneralas(){
-    for(let i = 0;i<23;i++){
+/*function PotHelyreGeneralas(){
+        for(var i = 0;i<23;i++){
         var index = cellak[i].info.id;
         var kep = document.createElement("img")
         kep.src = "img/"+index+".jpg"
-        kep.value = index; 
-        kep.style.visibility = "hidden";
-        kartyaBox.appendChild(kep);
-
-        kartyaBox.addEventListener("click",function(){
+        kep.style.width = "200px"
+        kep.value = index; //kep indexét tárolom
+    
+        kep.addEventListener("click",function(){
             if(!kepKivalasztva && kepElhelyezve){
                 kepIndex = kep.value
                 kepKivalasztva = true
+                this.style.visibility = "hidden"
                 kepElhelyezve = false
             }
-    })
-}
+        })
+    
+        var pothely =document.getElementById("potHely")
+        pothely.appendChild(kep)
+    }
+    }*/
+
+function KartyaboxbaGeneralas(){
+    var pothely =document.getElementById("potHely")
+    for(let i = 0;i<23;i++){
+        kartyaBox.addEventListener("click",function(){
+            if(!kepKivalasztva && kepElhelyezve){
+                var index = Math.floor(Math.random()*23+1)
+                var kep = document.createElement("img")
+                kepIndex = index
+                kep.src = "img/"+index+".jpg"
+                kep1.src = "img/"+kepIndex+".jpg"
+                kepKivalasztva = true
+                kepElhelyezve = false
+                pothely.appendChild(kep1)
+                kep1.style.width = "200px"   
+                kep1.style.visibility = "visible"
+            }
+        }) 
+    }
 }
 
 function Main(){

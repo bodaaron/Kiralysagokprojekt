@@ -28,13 +28,13 @@
     width: 50%;
     display: flex;
     flex-direction: column;
-    background-color: green;
+    background-image: url(fu.jpg);
 }
 #korokBox{
     border: 1px solid black;
     width: 20%;
     height: 40vw;
-    background-color: brown;
+    background-image: url(lovag.jpg);
 }
 
 .sordiv{
@@ -46,6 +46,7 @@
     width: 16.6%;
     margin: 5px;
     border: 1px solid black;
+    background-image: url(mezo.jpg);
 }
 img{
     width: 100%;
