@@ -136,7 +136,6 @@ function TablaGeneralasa(){
                             tomb.push(this.id)
                             pothely.removeChild(kep1)
                         }  
-                        console.log(tomb)
                     })
                 sorDiv.appendChild(oszlopDiv);
             }
@@ -148,13 +147,13 @@ function TablaGeneralasa(){
         for(var i = 0;i<100;i++){
             var a = Math.floor(Math.random()*23+1);
             console.log(a);
-            var sv = cellak[0];
-            cellak[0] = cellak[a];
-            cellak[a] = sv;
+            var sv = kartyaAdatok[0];
+            kartyaAdatok[0] = kartyaAdatok[a];
+            kartyaAdatok[a] = sv;
         }
     }
-
-/*function PotHelyreGeneralas(){
+/*
+function PotHelyreGeneralas(){
         for(var i = 0;i<23;i++){
         var index = cellak[i].info.id;
         var kep = document.createElement("img")
@@ -174,22 +173,29 @@ function TablaGeneralasa(){
         var pothely =document.getElementById("potHely")
         pothely.appendChild(kep)
     }
-    }*/
+    }
+*/
 
 function KartyaboxbaGeneralas(){
     var pothely =document.getElementById("potHely")
-    var i = 0;
+    var  i = 0;
     var j = 0;
-    for(let i = 0;i<23;i++){
-        var index = cellak[i].info.id;
-        var kep = document.createElement("img")
-        kep.src = "img/"+index+".jpg"
-        kep.style.width = "200px"
-        kep.value = index;
-        var pothely =document.getElementById("potHely")
-        pothely.appendChild(kep)
+    var kep = document.createElement("img")
+    kartyaBox.addEventListener("click",function(){
+        var index = cellak[i].info.id
+        kep.src = "img/"+index+".jpg";
+            if(!kepKivalasztva && kepElhelyezve){
+                kepIndex = index;
+                kep1.src = "img/"+kepIndex+".jpg";
+                kepKivalasztva = true;
+                kepElhelyezve = false;
+                pothely.appendChild(kep1);
+                kep1.style.width = "200px";   
+                kep1.style.visibility = "visible"
+                i++;    
+            }    
+        }) 
     }
-}
 
 function VarGeneralas(){
     for(let i = 0;i<varAdatok.length;i++){
@@ -203,6 +209,25 @@ function VarGeneralas(){
         kep.style.visibility = "visible"
     }
 }
+    var  i = 0;
+    var j = 0;
+    var kep = document.createElement("img")
+    kartyaBox.addEventListener("click",function(){
+        var index = cellak[i].info.id
+        kep.src = "img/"+index+".jpg";
+            if(!kepKivalasztva && kepElhelyezve){
+                kepIndex = index;
+                kep1.src = "img/"+kepIndex+".jpg";
+                kepKivalasztva = true;
+                kepElhelyezve = false;
+                pothely.appendChild(kep1);
+                kep1.style.width = "200px";   
+                kep1.style.visibility = "visible"
+                i++;    
+            }    
+        }) 
+
+
 
 function Main(){
 
@@ -212,8 +237,9 @@ function Main(){
     jatekTerElrendezes();
     TablaGeneralasa();
     CellakFeltoltese();
-    //PotHelyreGeneralas();
     CellaKeveres();
+    //PotHelyreGeneralas();
+    console.log(cellak)
     KartyaboxbaGeneralas();
     VarGeneralas();
 }
