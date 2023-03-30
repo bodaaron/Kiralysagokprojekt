@@ -103,7 +103,6 @@ function jatekTerBetolt(){
     jatekTer.appendChild(tabla);
     jatekTer.appendChild(korokBox);
     
-    kartyaBox.innerHTML = "kartya box";
     pontBox.innerHTML = "pontok";
     korokBox.innerHTML = "korok";
 }
