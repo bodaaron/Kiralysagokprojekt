@@ -21,6 +21,10 @@
     border: 1px solid darkgreen;
     width: 100%;
     height: 20vw;
+<<<<<<< HEAD
+=======
+    background-image: url("pénzháttér.jpg");
+>>>>>>> 2526edfa7a35c8b5c3a5c256b338ebc28c16ca1a
 }
 #tabla{
     border: 1px solid darkgreen;
@@ -50,4 +54,11 @@
 }
 img{
     width: 100%;
+<<<<<<< HEAD
+=======
+}
+#varhely{
+    border: 3px solid black;
+    width: 1050px;
+>>>>>>> 2526edfa7a35c8b5c3a5c256b338ebc28c16ca1a
 }

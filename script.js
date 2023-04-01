@@ -90,10 +90,13 @@ var cellak = [];
 var kepKivalasztva = false;
 var kepElhelyezve = true;
 var kepIndex;
+<<<<<<< HEAD
 var kep = document.createElement("img")
 var oszlopDiv = document.createElement("div");  
 var ertek;
 var oszlopertek = 0;
+=======
+>>>>>>> 2526edfa7a35c8b5c3a5c256b338ebc28c16ca1a
 
 var cellak = []
 var kepKivalasztva = false
@@ -107,8 +110,12 @@ function jatekTerBetolt(){
     jatekTer.appendChild(tabla);
     jatekTer.appendChild(korokBox);
     
+<<<<<<< HEAD
     pontBox.innerHTML = "pontok";
     korokBox.innerHTML = "korok";
+=======
+    
+>>>>>>> 2526edfa7a35c8b5c3a5c256b338ebc28c16ca1a
 }
 
 function jatekTerElrendezes(){
@@ -135,11 +142,19 @@ function TablaGeneralasa(){
                         if(kepKivalasztva && !kepElhelyezve && !(tomb.indexOf(this.id)>-1)){
                             kepElhelyezve = true;
                             kepKivalasztva = false;
+<<<<<<< HEAD
                             var kep = document.createElement("img")
+=======
+                            var kep = document.createElement("img");
+>>>>>>> 2526edfa7a35c8b5c3a5c256b338ebc28c16ca1a
                             kep.src = "img/"+kepIndex+".jpg";
                             this.appendChild(kep);
                             tomb.push(this.id)
                             pothely.removeChild(kep1)
+<<<<<<< HEAD
+=======
+                            
+>>>>>>> 2526edfa7a35c8b5c3a5c256b338ebc28c16ca1a
                         }  
                     })
                 sorDiv.appendChild(oszlopDiv);
@@ -151,12 +166,22 @@ function TablaGeneralasa(){
     function CellaKeveres(){
         for(var i = 0;i<100;i++){
             var a = Math.floor(Math.random()*23+1);
+<<<<<<< HEAD
             //console.log(a);
             var sv = kartyaAdatok[0];
             kartyaAdatok[0] = kartyaAdatok[a];
             kartyaAdatok[a] = sv;
         }
     }
+=======
+            console.log(a);
+            var sv = kartyaAdatok[0];
+            kartyaAdatok[0] = kartyaAdatok[a];
+            kartyaAdatok[a] = sv;
+            
+        }
+}
+>>>>>>> 2526edfa7a35c8b5c3a5c256b338ebc28c16ca1a
 /*
 function PotHelyreGeneralas(){
         for(var i = 0;i<23;i++){
@@ -169,7 +194,10 @@ function PotHelyreGeneralas(){
         kep.addEventListener("click",function(){
             if(!kepKivalasztva && kepElhelyezve){
                 kepIndex = kep.value
+<<<<<<< HEAD
                 console.log(kepIndex)
+=======
+>>>>>>> 2526edfa7a35c8b5c3a5c256b338ebc28c16ca1a
                 kepKivalasztva = true
                 this.style.visibility = "hidden"
                 kepElhelyezve = false
@@ -181,6 +209,7 @@ function PotHelyreGeneralas(){
     }
     }
 */
+<<<<<<< HEAD
 function Ertekeles(){
     oszlopertek += 
     console.log(oszlopertek)
@@ -207,11 +236,90 @@ function KartyaboxbaGeneralas(){
             }) 
         }
       }
+=======
+
+function KartyaboxbaGeneralas(){
+    var pothely =document.getElementById("potHely");
+    var  i = 0;
+    var j = 0;
+    var db = 0;
+    var kep = document.createElement("img")
+    kartyaBox.addEventListener("click",function(){
+        var index = cellak[i].info.id
+        kep.src = "img/"+index+".jpg";
+            if(!kepKivalasztva && kepElhelyezve && db<23){
+                kepIndex = index;
+                kep1.src = "img/"+kepIndex+".jpg";
+                kepKivalasztva = true;
+                kepElhelyezve = false;
+                pothely.appendChild(kep1);
+                kep1.style.width = "200px";   
+                kep1.style.visibility = "visible"
+                i++;
+                db++;
+            }    
+        }) 
+    }
+
+function VarGeneralas(){
+    for(let i = 1;i<8;i++){
+        //var index = varAdatok[i].info.id;
+        if(i<5){
+            var kep = document.createElement("img")
+            kep.src = "varak/"+1+".png"
+            kep.style.width = "150px"
+            kep.value = 1;
+            var varhely =document.getElementById("varhely")
+            varhely.appendChild(kep)
+            kep.style.visibility = "visible";
+        }
+        if(i==5){
+            var kep = document.createElement("img")
+            kep.src = "varak/"+2+".png"
+            kep.style.width = "150px"
+            kep.value = 2;
+            var varhely =document.getElementById("varhely")
+            varhely.appendChild(kep)
+            kep.style.visibility = "visible";
+        }
+        if(i==6){
+            var kep = document.createElement("img")
+            kep.src = "varak/"+3+".png"
+            kep.style.width = "150px"
+            kep.value = 3;
+            var varhely =document.getElementById("varhely")
+            varhely.appendChild(kep)
+            kep.style.visibility = "visible";
+        }
+        if(i==7){
+            var kep = document.createElement("img")
+            kep.src = "varak/"+4+".png"
+            kep.style.width = "150px"
+            kep.value = 4;
+            var varhely =document.getElementById("varhely")
+            varhely.appendChild(kep)
+            kep.style.visibility = "visible";
+        }
+        
+    }
+
+}
+
+function Varhelyezes(){
+    varhely.addEventListener("click",function(){
+        
+    })
+}
+>>>>>>> 2526edfa7a35c8b5c3a5c256b338ebc28c16ca1a
 
 
 function Main(){
 
+<<<<<<< HEAD
     //console.log(kartyaAdatok[0].id)
+=======
+    console.log(kartyaAdatok[0].id)
+>>>>>>> 2526edfa7a35c8b5c3a5c256b338ebc28c16ca1a
 
     jatekTerBetolt();
     jatekTerElrendezes();
@@ -221,5 +329,10 @@ function Main(){
     //PotHelyreGeneralas();
     console.log(cellak)
     KartyaboxbaGeneralas();
+<<<<<<< HEAD
+=======
+    VarGeneralas();
+    Varhelyezes();
+>>>>>>> 2526edfa7a35c8b5c3a5c256b338ebc28c16ca1a
 }
 Main();
