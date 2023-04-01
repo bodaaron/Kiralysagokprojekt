@@ -153,8 +153,7 @@ function TablaGeneralasa(){
             kartyaAdatok[a] = sv;
             
         }
-        
-    }
+}
 /*
 function PotHelyreGeneralas(){
         for(var i = 0;i<23;i++){
