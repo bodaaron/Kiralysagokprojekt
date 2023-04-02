@@ -145,11 +145,15 @@ function TablaGeneralasa(){
 
     function CellaKeveres(){
         for(var i = 0;i<100;i++){
-            var a = Math.floor(Math.random()*23+1);
-            var sv = kartyaAdatok[0];
+            var a = Math.floor(Math.random()*22);
+            var b = Math.floor(Math.random()*22)
+            console.log(a);
+            /*var sv = kartyaAdatok[0];
             kartyaAdatok[0] = kartyaAdatok[a];
-            kartyaAdatok[a] = sv;
-            
+            kartyaAdatok[a] = sv;*/
+            var sv = cellak[a];
+            cellak[a] = cellak[b];
+            cellak[b] = sv;
         }
 }
 
