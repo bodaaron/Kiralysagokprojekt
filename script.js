@@ -153,52 +153,114 @@ function TablaGeneralasa(){
         }
 }
 
-var oszlopertekek = [0,0,0,0,0,0]
-function OszlopErtekeles(id,ertek0,jel0){
-    console.log(id)
+
+var o0 = [];
+var o1 = [];
+var o2 = [];
+var o3 = [];
+var o4 = [];
+var o5 = [];
+
+function OszlopErtekeles(id,ertek0){
     if(id == 0 || id == 6 || id == 12 || id == 18 || id == 24){
-        oszlopertekek[0] += ertek0
-        if(ertek0 == 0){
-            oszlopertekek[0] += jel0
+        if(ertek0 > 0 || ertek0 < 0){
+            o0.push(ertek0);
+        }
+        else if(ertek0 == 0){
+            o0.push(jel);
         }
     }
     else if(id == 1 || id == 7 || id == 13 || id == 19 || id == 25){
-        oszlopertekek[1] += ertek0
+        if(ertek0 > 0 || ertek0 < 0){
+            o1.push(ertek0);
+        }
+        else if(ertek0 == 0){
+            o1.push(jel);
+        }
     }
     else if(id == 2 || id == 8 || id == 14 || id == 20 || id == 26){
-        oszlopertekek[2] += ertek0
+        if(ertek0 > 0 || ertek0 < 0){
+            o2.push(ertek0);
+        }
+        else if(ertek0 == 0){
+            o2.push(jel);
+        }
     }
     else if(id == 3 || id == 9|| id == 15 || id == 21 || id == 27){
-        oszlopertekek[3] += ertek0
+        if(ertek0 > 0 || ertek0 < 0){
+            o3.push(ertek0);
+        }
+        else if(ertek0 == 0){
+            o3.push(jel);
+        }
     }
     else if(id == 4 || id == 10 || id == 16 || id == 22 || id == 28){
-        oszlopertekek[4] += ertek0
+        if(ertek0 > 0 || ertek0 < 0){
+            o4.push(ertek0);
+        }
+        else if(ertek0 == 0){
+            o5.push(jel);
+        }
     }
     else if(id == 5 || id == 11 || id == 17 || id == 23 || id == 29){
-        oszlopertekek[5] += ertek0
+        if(ertek0 > 0 || ertek0 < 0){
+            o5.push(ertek0);
+        }
+        else if(ertek0 == 0){
+            o5.push(jel);
+        }
     }
-    console.log(oszlopertekek)
+    console.log(o0,o1,o2,o3,o4,o5)
 }
 
-var sorertekek = [0,0,0,0]
+var s0 = [];
+var s1 = [];
+var s2 = [];
+var s3 = [];
+var s4 = [];
+var s5 = [];
 function SorErtekeles(id,ertek0){
     console.log(id)
     if(id == 0 || id == 1 || id == 2 || id == 3 || id == 4 || id == 5){
-        sorertekek[0] += ertek0
+        if(ertek0 > 0 || ertek0 < 0){
+            s0.push(ertek0);
+        }
+        else if(ertek0 == 0){
+            s0.push(jel);
+        }
     }
     else if(id == 6 || id == 7 || id == 8 || id == 9 || id == 10 || id == 11){
-        sorertekek[1] += ertek0
+        if(ertek0 > 0 || ertek0 < 0){
+            s1.push(ertek0);
+        }
+        else if(ertek0 == 0){
+            s1.push(jel);
+        }
     }
     else if(id == 12 || id == 13 || id == 14 || id == 15 || id == 16 || id == 17){
-        sorertekek[2] += ertek0
+        if(ertek0 > 0 || ertek0 < 0){
+            s2.push(ertek0);
+        }
+        else if(ertek0 == 0){
+            s2.push(jel);
+        }
     }
     else if(id == 18 || id == 19|| id == 20 || id == 21 || id == 22 || id == 23){
-        sorertekek[3] += ertek0
+        if(ertek0 > 0 || ertek0 < 0){
+            s3.push(ertek0);
+        }
+        else if(ertek0 == 0){
+            s3.push(jel);
+        }
     }
     else if(id == 23 || id == 24 || id == 25 || id == 26 || id == 27 || id == 28){
-        sorertekek[4] += ertek0
+        if(ertek0 > 0 || ertek0 < 0){
+            s4.push(ertek0);
+        }
+        else if(ertek0 == 0){
+            s4.push(jel);
+        }
     }
-    console.log(sorertekek)
 }
 /*
 function PotHelyreGeneralas(){
