@@ -137,6 +137,16 @@ function TablaGeneralasa(){
                             SorErtekeles(this.id,ertek,jel)
                         }  
                     })
+            oszlopDiv.addEventListener("click",function(){
+                        if(varKivalasztva && !varElhelyezve && !(tomb.indexOf(this.id)>-1)){
+                            varElhelyezve = true;
+                            varKivalasztva = false;
+                            var kep = document.createElement("img");
+                            kep.src = "varak/"+kepIndex+".png";
+                            this.appendChild(kep);
+                            tomb.push(this.id)
+                        }  
+                    })
                 sorDiv.appendChild(oszlopDiv);
             }
             tabla.appendChild(sorDiv);
@@ -353,23 +363,18 @@ function VarGeneralas(){
             varhely.appendChild(kep)
             kep.style.visibility = "visible";
         }
-        Varhelyezes(kep)
+        kep.addEventListener("click",function(){
+            if(!varKivalasztva && varElhelyezve){
+                kepIndex = this.value
+                varKivalasztva = true
+                this.style.visibility = "hidden"
+                varElhelyezve = false
+            }
+        })
         
     }
 
 }
-
-function Varhelyezes(kep){
-    varhely.addEventListener("click",function(){
-        if(!varKivalasztva && varElhelyezve){
-            kepIndex = kep.value
-            varKivalasztva = true
-            this.style.visibility = "hidden"
-            varElhelyezve = false
-        }
-    })
-}
-
 
 
 function Main(){
@@ -383,6 +388,5 @@ function Main(){
     console.log(cellak)
     KartyaboxbaGeneralas();
     VarGeneralas();
-    Varhelyezes();
 }
 Main();
