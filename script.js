@@ -42,23 +42,6 @@ var varAdatok = [
     {id:16,color:4,value:4},
 ]
 
-var objektum = {
-    szam1: 34,
-    szam2: 23,
-    id: 0,
-    ertek: "zöldvár4",
-    Torol: Torol(),
-    Szomszedok: [234,535,5235,45]
-}
-
-function Torol(){
-    console.log("töröl");
-}
-
-var cellak = []
-var tomb = []
-var kep1 = document.createElement("img")
-
 function CellakFeltoltese(){
     for(var i = 0; i < 23; i++){
         cellak[i] = []
@@ -70,29 +53,23 @@ function CellakFeltoltese(){
         cellak[i].tpye = "vár"
         cellak[i].info = varAdatok[i-23]
     }
-
+    
 }
 
+var cellak = []
+var tomb = []
+var kep1 = document.createElement("img")
 var tabla = document.createElement("div");
 var kartyaBox = document.createElement("div");
 var leftSide = document.createElement("div");
 var pontBox = document.createElement("div");
 var korokBox = document.createElement("div");
 var jatekTer = document.getElementById("jatekTer");
-var kepKivalasztva = false;
-var kepElhelyezve = true;
-var kepIndex;
-
 var cellak = [];
 var kepKivalasztva = false;
 var kepElhelyezve = true;
 var kepIndex;
 var ertek;
-
-var cellak = []
-var varKivalasztva = false
-var varElhelyezve = true
-var kepIndex;
 
 function jatekTerBetolt(){
     leftSide.appendChild(kartyaBox);
@@ -158,9 +135,6 @@ function TablaGeneralasa(){
             var a = Math.floor(Math.random()*22);
             var b = Math.floor(Math.random()*22)
             console.log(a);
-            /*var sv = kartyaAdatok[0];
-            kartyaAdatok[0] = kartyaAdatok[a];
-            kartyaAdatok[a] = sv;*/
             var sv = cellak[a];
             cellak[a] = cellak[b];
             cellak[b] = sv;
@@ -233,6 +207,7 @@ var s2 = [];
 var s3 = [];
 var s4 = [];
 var s5 = [];
+
 function SorErtekeles(id,ertek0){
     console.log(id)
     if(id == 0 || id == 1 || id == 2 || id == 3 || id == 4 || id == 5){
@@ -324,9 +299,19 @@ function KartyaboxbaGeneralas(){
         }) 
     }
 
+function PenzGeneralas(){
+            var penz = document.createElement("img")
+            penz.src = "penz/"+50+".png"
+            penz.style.width = "150px"
+            penz.value = 1;
+            var pontBox = document.getElementById("Pontbox")
+            pontBox.appendChild(penz)
+            penz.style.visibility = "visible"; 
+    }   
+
+
 function VarGeneralas(){
     for(let i = 1;i<8;i++){
-        //var index = varAdatok[i].info.id;
         if(i<5){
             var kep = document.createElement("img")
             kep.src = "varak/"+1+".png"
@@ -386,6 +371,7 @@ function Main(){
     CellaKeveres();
     //PotHelyreGeneralas();
     console.log(cellak)
+    PenzGeneralas();
     KartyaboxbaGeneralas();
     VarGeneralas();
 }
