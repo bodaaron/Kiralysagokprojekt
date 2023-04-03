@@ -35,6 +35,8 @@
     border: 1px solid black;
     width: 20%;
     height: 40vw;
+    background-image: url(lovag.jpg);
+    background-size: cover;
 }
 
 .sordiv{
@@ -54,4 +56,10 @@ img{
 #varhely{
     border: 3px solid black;
     width: 1050px;
+}
+#potHely{
+    width: 150px;
+    border: 3px solid black;
+    float: right;
+    flex-wrap: wrap;
 }

@@ -42,23 +42,6 @@ var varAdatok = [
     {id:16,color:4,value:4},
 ]
 
-var objektum = {
-    szam1: 34,
-    szam2: 23,
-    id: 0,
-    ertek: "zöldvár4",
-    Torol: Torol(),
-    Szomszedok: [234,535,5235,45]
-}
-
-function Torol(){
-    console.log("töröl");
-}
-
-var cellak = []
-var tomb = []
-var kep1 = document.createElement("img")
-
 function CellakFeltoltese(){
     for(var i = 0; i < 23; i++){
         cellak[i] = []
@@ -70,29 +53,23 @@ function CellakFeltoltese(){
         cellak[i].tpye = "vár"
         cellak[i].info = varAdatok[i-23]
     }
-
+    
 }
 
+var cellak = []
+var tomb = []
+var kep1 = document.createElement("img")
 var tabla = document.createElement("div");
 var kartyaBox = document.createElement("div");
 var leftSide = document.createElement("div");
 var pontBox = document.createElement("div");
 var korokBox = document.createElement("div");
 var jatekTer = document.getElementById("jatekTer");
-var kepKivalasztva = false;
-var kepElhelyezve = true;
-var kepIndex;
-
 var cellak = [];
 var kepKivalasztva = false;
 var kepElhelyezve = true;
 var kepIndex;
 var ertek;
-
-var cellak = []
-var varKivalasztva = false
-var varElhelyezve = true
-var kepIndex;
 
 function jatekTerBetolt(){
     leftSide.appendChild(kartyaBox);
@@ -137,6 +114,16 @@ function TablaGeneralasa(){
                             SorErtekeles(this.id,ertek,jel)
                         }  
                     })
+            oszlopDiv.addEventListener("click",function(){
+                        if(varKivalasztva && !varElhelyezve && !(tomb.indexOf(this.id)>-1)){
+                            varElhelyezve = true;
+                            varKivalasztva = false;
+                            var kep = document.createElement("img");
+                            kep.src = "varak/"+kepIndex+".png";
+                            this.appendChild(kep);
+                            tomb.push(this.id)
+                        }  
+                    })
                 sorDiv.appendChild(oszlopDiv);
             }
             tabla.appendChild(sorDiv);
@@ -148,9 +135,6 @@ function TablaGeneralasa(){
             var a = Math.floor(Math.random()*22);
             var b = Math.floor(Math.random()*22)
             console.log(a);
-            /*var sv = kartyaAdatok[0];
-            kartyaAdatok[0] = kartyaAdatok[a];
-            kartyaAdatok[a] = sv;*/
             var sv = cellak[a];
             cellak[a] = cellak[b];
             cellak[b] = sv;
@@ -311,7 +295,7 @@ function KartyaboxbaGeneralas(){
                 kepKivalasztva = true;
                 kepElhelyezve = false;
                 pothely.appendChild(kep1);
-                kep1.style.width = "200px";   
+                kep1.style.width = "150px";   
                 kep1.style.visibility = "visible"
                 i++;
                 db++;
@@ -319,9 +303,19 @@ function KartyaboxbaGeneralas(){
         }) 
     }
 
+function PenzGeneralas(){
+            var penz = document.createElement("img")
+            penz.src = "penz/"+50+".png"
+            penz.style.width = "150px"
+            penz.value = 1;
+            var pontBox = document.getElementById("Pontbox")
+            pontBox.appendChild(penz)
+            penz.style.visibility = "visible"; 
+    }   
+
+
 function VarGeneralas(){
     for(let i = 1;i<8;i++){
-        //var index = varAdatok[i].info.id;
         if(i<5){
             var kep = document.createElement("img")
             kep.src = "varak/"+1+".png"
@@ -358,23 +352,18 @@ function VarGeneralas(){
             varhely.appendChild(kep)
             kep.style.visibility = "visible";
         }
-        Varhelyezes(kep)
+        kep.addEventListener("click",function(){
+            if(!varKivalasztva && varElhelyezve){
+                kepIndex = this.value
+                varKivalasztva = true
+                this.style.visibility = "hidden"
+                varElhelyezve = false
+            }
+        })
         
     }
 
 }
-
-function Varhelyezes(kep){
-    varhely.addEventListener("click",function(){
-        if(!varKivalasztva && varElhelyezve){
-            kepIndex = kep.value
-            varKivalasztva = true
-            this.style.visibility = "hidden"
-            varElhelyezve = false
-        }
-    })
-}
-
 
 
 function Main(){
@@ -386,9 +375,8 @@ function Main(){
     CellaKeveres();
     //PotHelyreGeneralas();
     console.log(cellak)
+    PenzGeneralas();
     KartyaboxbaGeneralas();
     VarGeneralas();
-    Varhelyezes();
-    
 }
 Main();
