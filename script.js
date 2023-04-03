@@ -166,6 +166,7 @@ var o4 = [];
 var o5 = [];
 
 function OszlopErtekeles(id,ertek0){
+
     if(id == 0 || id == 6 || id == 12 || id == 18 || id == 24){
         if(ertek0 > 0 || ertek0 < 0){
             o0.push(ertek0);
@@ -215,6 +216,7 @@ function OszlopErtekeles(id,ertek0){
         }
     }
     console.log(o0,o1,o2,o3,o4,o5)
+    
 }
 
 var s0 = [];
@@ -223,6 +225,7 @@ var s2 = [];
 var s3 = [];
 var s4 = [];
 var s5 = [];
+
 function SorErtekeles(id,ertek0){
     console.log(id)
     if(id == 0 || id == 1 || id == 2 || id == 3 || id == 4 || id == 5){
@@ -265,7 +268,9 @@ function SorErtekeles(id,ertek0){
             s4.push(jel);
         }
     }
+   
 }
+
 /*
 function PotHelyreGeneralas(){
         for(var i = 0;i<23;i++){
@@ -384,5 +389,6 @@ function Main(){
     KartyaboxbaGeneralas();
     VarGeneralas();
     Varhelyezes();
+    
 }
 Main();
